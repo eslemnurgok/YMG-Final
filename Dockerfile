@@ -1,5 +1,11 @@
-FROM nginx:latest
-COPY content /usr/share/nginx/html
-ADD deneme.txt /deneme
+FROM nginx:alpine
 
-VOLUME /myvol
+LABEL maintainer="g180@gmail.com"
+
+WORKDIR /usr/share/nginx/html
+
+COPY content/ .
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
